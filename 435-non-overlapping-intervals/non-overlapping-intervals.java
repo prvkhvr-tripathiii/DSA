@@ -1,7 +1,7 @@
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
-        List <int[]> rem = new ArrayList<>();
         int n = intervals.length;
+        int count = 0;
 
         Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
 
@@ -11,11 +11,11 @@ class Solution {
             int currStart = intervals[i][0];
 
             if (prevEnd > currStart) {
-                rem.add(intervals[i]);
+                count++;
             } else {
                 prevEnd = intervals[i][1];
             }
         }
-        return rem.size();
+        return count;
     }
 }
